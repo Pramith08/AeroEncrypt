@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "81709068009",
+    "project_id": "aeroencrypt-73305",
+    "storage_bucket": "aeroencrypt-73305.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81709068009:android:ca6bf4543f350df7340a78",
+        "android_client_info": {
+          "package_name": "com.example.aeroencrypt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDX655Hc78LYr22hf7zAYCEZNa9YmEvbNE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
