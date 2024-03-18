@@ -137,124 +137,126 @@ class _LoginPageState extends State<LoginPage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFF07070A),
-        body: Padding(
-          padding: EdgeInsets.all(20),
-          child: Column(
-            children: [
-              SizedBox(
-                height: screenHeight * 0.03,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  MyTitleText(
-                    title: "Sign In",
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: screenHeight * 0.03,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    MyTitleText(
+                      title: "Sign In",
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: screenHeight * 0.03,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Email",
+                        style: GoogleFonts.openSans(
+                          textStyle: TextStyle(
+                            fontSize: 15,
+                            color: Color(0xFFC3BBBB),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              SizedBox(
-                height: screenHeight * 0.03,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(6.0),
-                child: Row(
-                  children: [
-                    Text(
-                      "Email",
-                      style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                          fontSize: 15,
-                          color: Color(0xFFC3BBBB),
+                ),
+                SizedBox(
+                  height: 3,
+                ),
+                MyTextField(
+                  onChange: (value) {},
+                  controller: _loginEmailController,
+                  hintText: "  Email",
+                  width: screenWidth - 45,
+                  labelText: "Enter Your Email",
+                ),
+                SizedBox(
+                  height: screenHeight * 0.01,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Password",
+                        style: GoogleFonts.openSans(
+                          textStyle: TextStyle(
+                            fontSize: 15,
+                            color: Color(0xFFC3BBBB),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 3,
-              ),
-              MyTextField(
-                onChange: (value) {},
-                controller: _loginEmailController,
-                hintText: "  Email",
-                width: screenWidth - 45,
-                labelText: "Enter Your Email",
-              ),
-              SizedBox(
-                height: screenHeight * 0.01,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(6.0),
-                child: Row(
-                  children: [
-                    Text(
-                      "Password",
-                      style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                          fontSize: 15,
-                          color: Color(0xFFC3BBBB),
-                        ),
-                      ),
-                    ),
-                  ],
+                SizedBox(
+                  height: 3,
                 ),
-              ),
-              SizedBox(
-                height: 3,
-              ),
-              MyPasswordTextField(
-                controller: _loginPassController,
-                hintText: "  Password",
-                labelText: "Enter Your Password",
-                width: screenWidth - 45,
-              ),
-              SizedBox(
-                height: screenHeight * 0.03,
-              ),
-              // Expanded(
-              //   child: SizedBox(),
-              // ),
-              MyButton(
-                height: 55,
-                width: screenWidth - 45,
-                buttonText: "Login",
-                onTap: () {
-                  FocusScope.of(context).unfocus();
-                  login(context);
+                MyPasswordTextField(
+                  controller: _loginPassController,
+                  hintText: "  Password",
+                  labelText: "Enter Your Password",
+                  width: screenWidth - 45,
+                ),
+                SizedBox(
+                  height: screenHeight * 0.03,
+                ),
+                // Expanded(
+                //   child: SizedBox(),
+                // ),
+                MyButton(
+                  height: 55,
+                  width: screenWidth - 45,
+                  buttonText: "Login",
+                  onTap: () {
+                    FocusScope.of(context).unfocus();
+                    login(context);
 
-                  _loginEmailController.clear();
-                  _loginPassController.clear();
-                },
-              ),
-              SizedBox(
-                height: screenHeight * 0.01,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: screenWidth * 0.01,
-                  ),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      fixedSize: const Size(240, 40),
+                    _loginEmailController.clear();
+                    _loginPassController.clear();
+                  },
+                ),
+                SizedBox(
+                  height: screenHeight * 0.01,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: screenWidth * 0.01,
                     ),
-                    onPressed: newUser,
-                    child: Text(
-                      "Not a user..?  Create new user!",
-                      style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                          color: Color(0xFFC3BBBB),
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        fixedSize: const Size(240, 40),
+                      ),
+                      onPressed: newUser,
+                      child: Text(
+                        "Not a user..?  Create new user!",
+                        style: GoogleFonts.openSans(
+                          textStyle: TextStyle(
+                            color: Color(0xFFC3BBBB),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

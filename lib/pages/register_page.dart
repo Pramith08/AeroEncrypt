@@ -149,156 +149,158 @@ class _RegisterPageState extends State<RegisterPage> {
     screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Color(0xFF07070A),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          children: [
-            SizedBox(
-              height: screenHeight * 0.03,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                // Container(
-                //   height: 50,
-                //   width: 50,
-                //   decoration: BoxDecoration(
-                //       color: Color(0xFFF4BBFF),
-                //       borderRadius: BorderRadius.circular(
-                //         15,
-                //       )),
-                //   child: IconButton(
-                //     onPressed: back,
-                //     icon: Icon(
-                //       color: Color(0xFF07070A),
-                //       Icons.arrow_back_ios_sharp,
-                //     ),
-                //   ),
-                // ),
-                // SizedBox(
-                //   width: screenWidth * 0.04,
-                // ),
-                MyTitleText(
-                  title: "Sign Up",
-                )
-              ],
-            ),
-            SizedBox(
-              height: screenHeight * 0.03,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(6.0),
-              child: Row(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            children: [
+              SizedBox(
+                height: screenHeight * 0.03,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    "Email",
-                    style: GoogleFonts.openSans(
-                      textStyle: TextStyle(
-                        fontSize: 15,
-                        color: Color(0xFFC3BBBB),
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   height: 50,
+                  //   width: 50,
+                  //   decoration: BoxDecoration(
+                  //       color: Color(0xFFF4BBFF),
+                  //       borderRadius: BorderRadius.circular(
+                  //         15,
+                  //       )),
+                  //   child: IconButton(
+                  //     onPressed: back,
+                  //     icon: Icon(
+                  //       color: Color(0xFF07070A),
+                  //       Icons.arrow_back_ios_sharp,
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   width: screenWidth * 0.04,
+                  // ),
+                  MyTitleText(
+                    title: "Sign Up",
+                  )
                 ],
               ),
-            ),
-            SizedBox(
-              height: 3,
-            ),
-            MyTextField(
-              onChange: (value) {},
-              controller: _registerEmailController,
-              hintText: "  Email",
-              width: screenWidth - 45,
-              labelText: "Enter Your Email",
-            ),
-            Padding(
-              padding: const EdgeInsets.all(6.0),
-              child: Row(
-                children: [
-                  Text(
-                    "Password",
-                    style: GoogleFonts.openSans(
-                      textStyle: TextStyle(
-                        fontSize: 15,
-                        color: Color(0xFFC3BBBB),
+              SizedBox(
+                height: screenHeight * 0.03,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "Email",
+                      style: GoogleFonts.openSans(
+                        textStyle: TextStyle(
+                          fontSize: 15,
+                          color: Color(0xFFC3BBBB),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            SizedBox(
-              height: 3,
-            ),
-            MyPasswordTextField(
-                controller: _registerPassController,
+              SizedBox(
+                height: 3,
+              ),
+              MyTextField(
+                onChange: (value) {},
+                controller: _registerEmailController,
+                hintText: "  Email",
+                width: screenWidth - 45,
+                labelText: "Enter Your Email",
+              ),
+              Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "Password",
+                      style: GoogleFonts.openSans(
+                        textStyle: TextStyle(
+                          fontSize: 15,
+                          color: Color(0xFFC3BBBB),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 3,
+              ),
+              MyPasswordTextField(
+                  controller: _registerPassController,
+                  hintText: "  Password",
+                  labelText: "Enter Your Password",
+                  width: screenWidth - 45),
+              SizedBox(
+                height: screenHeight * 0.01,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "Confirm Password",
+                      style: GoogleFonts.openSans(
+                        textStyle: TextStyle(
+                          fontSize: 15,
+                          color: Color(0xFFC3BBBB),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 3,
+              ),
+              MyPasswordTextField(
+                controller: _confirmRegisterPassController,
                 hintText: "  Password",
-                labelText: "Enter Your Password",
-                width: screenWidth - 45),
-            SizedBox(
-              height: screenHeight * 0.01,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(6.0),
-              child: Row(
-                children: [
-                  Text(
-                    "Confirm Password",
-                    style: GoogleFonts.openSans(
-                      textStyle: TextStyle(
-                        fontSize: 15,
-                        color: Color(0xFFC3BBBB),
-                      ),
-                    ),
-                  ),
-                ],
+                labelText: "Confirm Your Password",
+                width: screenWidth - 45,
               ),
-            ),
-            SizedBox(
-              height: 3,
-            ),
-            MyPasswordTextField(
-              controller: _confirmRegisterPassController,
-              hintText: "  Password",
-              labelText: "Confirm Your Password",
-              width: screenWidth - 45,
-            ),
-            SizedBox(
-              height: screenHeight * 0.03,
-            ),
-            // Expanded(
-            //   child: SizedBox(),
-            // ),
-            Material(
-              color: Color(0xFFF4BBFF),
-              borderRadius: BorderRadius.circular(15),
-              child: InkWell(
-                onTap: () {
-                  FocusScope.of(context).unfocus();
-                  createNewUser(context);
-                  // _registerEmailController.clear();
-                  // _registerPassController.clear();
-                },
+              SizedBox(
+                height: screenHeight * 0.03,
+              ),
+              // Expanded(
+              //   child: SizedBox(),
+              // ),
+              Material(
+                color: Color(0xFFF4BBFF),
                 borderRadius: BorderRadius.circular(15),
-                child: Container(
-                  width: screenWidth - 45,
-                  height: 55,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Register",
-                    style: GoogleFonts.openSans(
-                      textStyle: TextStyle(
-                        color: Color(0xFF2D2A2E),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
+                child: InkWell(
+                  onTap: () {
+                    FocusScope.of(context).unfocus();
+                    createNewUser(context);
+                    // _registerEmailController.clear();
+                    // _registerPassController.clear();
+                  },
+                  borderRadius: BorderRadius.circular(15),
+                  child: Container(
+                    width: screenWidth - 45,
+                    height: 55,
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Register",
+                      style: GoogleFonts.openSans(
+                        textStyle: TextStyle(
+                          color: Color(0xFF2D2A2E),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

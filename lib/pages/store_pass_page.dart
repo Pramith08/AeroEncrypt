@@ -75,126 +75,128 @@ class _StorePassPageState extends State<StorePassPage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFF07070A),
-        body: Padding(
-          padding: EdgeInsets.all(20),
-          child: Column(
-            children: [
-              SizedBox(
-                height: screenHeight * 0.03,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  MyTitleText(
-                    title: "Store Password",
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: screenHeight * 0.03,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    MyTitleText(
+                      title: "Store Password",
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: screenHeight * 0.03,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(6.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "App Name",
+                        style: GoogleFonts.openSans(
+                          textStyle: TextStyle(
+                            fontSize: 15,
+                            color: Color(0xFFC3BBBB),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              SizedBox(
-                height: screenHeight * 0.03,
-              ),
-              Padding(
-                padding: EdgeInsets.all(6.0),
-                child: Row(
-                  children: [
-                    Text(
-                      "App Name",
-                      style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                          fontSize: 15,
-                          color: Color(0xFFC3BBBB),
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
-              ),
-              const SizedBox(
-                height: 3,
-              ),
-              MyTextField(
-                onChange: (value) {},
-                controller: _appNameController,
-                hintText: "  App Name",
-                width: screenWidth - 45,
-                labelText: "Enter Your App Name",
-              ),
-              SizedBox(
-                height: screenHeight * 0.01,
-              ),
+                const SizedBox(
+                  height: 3,
+                ),
+                MyTextField(
+                  onChange: (value) {},
+                  controller: _appNameController,
+                  hintText: "  App Name",
+                  width: screenWidth - 45,
+                  labelText: "Enter Your App Name",
+                ),
+                SizedBox(
+                  height: screenHeight * 0.01,
+                ),
 
-              //Username Text Field
-              Padding(
-                padding: EdgeInsets.all(6.0),
-                child: Row(
-                  children: [
-                    Text(
-                      "Username",
-                      style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                          fontSize: 15,
-                          color: Color(0xFFC3BBBB),
+                //Username Text Field
+                Padding(
+                  padding: EdgeInsets.all(6.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Username",
+                        style: GoogleFonts.openSans(
+                          textStyle: TextStyle(
+                            fontSize: 15,
+                            color: Color(0xFFC3BBBB),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 3,
-              ),
-              MyTextField(
-                onChange: (value) {},
-                controller: _userNameController,
-                hintText: "  Username",
-                width: screenWidth - 45,
-                labelText: "Enter Your Username",
-              ),
-              SizedBox(
-                height: screenHeight * 0.01,
-              ),
+                const SizedBox(
+                  height: 3,
+                ),
+                MyTextField(
+                  onChange: (value) {},
+                  controller: _userNameController,
+                  hintText: "  Username",
+                  width: screenWidth - 45,
+                  labelText: "Enter Your Username",
+                ),
+                SizedBox(
+                  height: screenHeight * 0.01,
+                ),
 
-              //Password Text Field
-              Padding(
-                padding: EdgeInsets.all(6.0),
-                child: Row(
-                  children: [
-                    Text(
-                      "Password",
-                      style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                          fontSize: 15,
-                          color: Color(0xFFC3BBBB),
+                //Password Text Field
+                Padding(
+                  padding: EdgeInsets.all(6.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Password",
+                        style: GoogleFonts.openSans(
+                          textStyle: TextStyle(
+                            fontSize: 15,
+                            color: Color(0xFFC3BBBB),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 3,
-              ),
-              MyPasswordTextField(
-                controller: _passwordController,
-                hintText: "  Password",
-                labelText: "Enter Your Password",
-                width: screenWidth - 45,
-              ),
-              SizedBox(
-                height: screenHeight * 0.03,
-              ),
-              // Expanded(
-              //   child: SizedBox(),
-              // ),
-              MyButton(
-                height: 55,
-                width: screenWidth - 55,
-                buttonText: "Store Password",
-                onTap: () async {
-                  _storeData();
-                },
-              ),
-            ],
+                const SizedBox(
+                  height: 3,
+                ),
+                MyPasswordTextField(
+                  controller: _passwordController,
+                  hintText: "  Password",
+                  labelText: "Enter Your Password",
+                  width: screenWidth - 45,
+                ),
+                SizedBox(
+                  height: screenHeight * 0.03,
+                ),
+                // Expanded(
+                //   child: SizedBox(),
+                // ),
+                MyButton(
+                  height: 55,
+                  width: screenWidth - 55,
+                  buttonText: "Store Password",
+                  onTap: () async {
+                    _storeData();
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
