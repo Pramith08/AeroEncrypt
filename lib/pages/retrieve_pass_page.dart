@@ -2,6 +2,7 @@ import 'package:aeroencrypt/components/my_app_list.dart';
 import 'package:aeroencrypt/components/my_textfield.dart';
 import 'package:aeroencrypt/services/database.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RetrievePassPage extends StatefulWidget {
   final String userId;
@@ -85,15 +86,17 @@ class _RetrievePassPageState extends State<RetrievePassPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   //App Name Text Field
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(6.0),
                     child: Row(
                       children: [
                         Text(
                           "App Name",
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Color(0xFFC3BBBB),
+                          style: GoogleFonts.openSans(
+                            textStyle: TextStyle(
+                              fontSize: 15,
+                              color: Color(0xFFC3BBBB),
+                            ),
                           ),
                         ),
                       ],

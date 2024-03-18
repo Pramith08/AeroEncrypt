@@ -2,6 +2,7 @@ import 'package:aeroencrypt/components/my_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:aeroencrypt/services/database.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ShowData extends StatefulWidget {
   final List<Map<String, String?>> allAppData;
@@ -31,25 +32,27 @@ class _ShowDataState extends State<ShowData> {
       builder: (BuildContext context) {
         return AlertDialog(
           backgroundColor: Color(0xFFF4BBFF),
-          title: const Text(
+          title: Text(
             'Alert',
-            style: TextStyle(
-              color: Color(0xFF2D2A2E),
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              fontFamily: "MontserratMedium",
+            style: GoogleFonts.openSans(
+              textStyle: TextStyle(
+                color: Color(0xFF2D2A2E),
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-          content: const SingleChildScrollView(
+          content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 Text(
                   'Would you like to delete this credential?',
-                  style: TextStyle(
-                    color: Color(0xFF2D2A2E),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: "MontserratMedium",
+                  style: GoogleFonts.openSans(
+                    textStyle: TextStyle(
+                      color: Color(0xFF2D2A2E),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ],
@@ -57,13 +60,14 @@ class _ShowDataState extends State<ShowData> {
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text(
+              child: Text(
                 'Cancel',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Color(0xFF2D2A2E),
-                  fontWeight: FontWeight.w700,
-                  fontFamily: "MontserratMedium",
+                style: GoogleFonts.openSans(
+                  textStyle: TextStyle(
+                    color: Color(0xFF2D2A2E),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
               onPressed: () {
@@ -71,13 +75,14 @@ class _ShowDataState extends State<ShowData> {
               },
             ),
             TextButton(
-              child: const Text(
+              child: Text(
                 'Delete',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.red,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: "MontserratMedium",
+                style: GoogleFonts.openSans(
+                  textStyle: TextStyle(
+                    fontSize: 16,
+                    color: Colors.red,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
               onPressed: () async {
@@ -109,7 +114,7 @@ class _ShowDataState extends State<ShowData> {
         appBar: AppBar(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
-              Radius.circular(15),
+              Radius.circular(8),
             ),
           ),
           automaticallyImplyLeading: false,
@@ -117,11 +122,12 @@ class _ShowDataState extends State<ShowData> {
           title: Center(
             child: Text(
               widget.appName,
-              style: TextStyle(
-                color: Color(0xFF2D2A2E),
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-                // fontFamily: "MontserratMedium",
+              style: GoogleFonts.openSans(
+                textStyle: TextStyle(
+                  color: Color(0xFF2D2A2E),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
           ),
@@ -155,18 +161,19 @@ class _ShowDataState extends State<ShowData> {
                               child: Center(
                                 child: Text(
                                   'Delete',
-                                  style: TextStyle(
-                                    color: Color(0xFF2D2A2E),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: "MontserratMedium",
+                                  style: GoogleFonts.openSans(
+                                    textStyle: TextStyle(
+                                      color: Color(0xFF2D2A2E),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ),
                               ),
                               decoration: BoxDecoration(
                                 color: Colors.red,
                                 borderRadius: BorderRadius.all(
-                                  Radius.circular(15),
+                                  Radius.circular(8),
                                 ),
                               ),
                               width: (screenWidth - 20) / 2,
@@ -201,18 +208,19 @@ class _ShowDataState extends State<ShowData> {
                           child: Center(
                             child: Text(
                               'Delete',
-                              style: TextStyle(
-                                color: Color(0xFF2D2A2E),
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: "MontserratMedium",
+                              style: GoogleFonts.openSans(
+                                textStyle: TextStyle(
+                                  color: Color(0xFF2D2A2E),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                ),
                               ),
                             ),
                           ),
                           decoration: BoxDecoration(
                             color: Colors.red,
                             borderRadius: BorderRadius.all(
-                              Radius.circular(15),
+                              Radius.circular(8),
                             ),
                           ),
                           width: (screenWidth - 20) / 2,

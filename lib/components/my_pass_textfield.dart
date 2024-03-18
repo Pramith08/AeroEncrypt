@@ -45,7 +45,7 @@ class _MyPasswordTextFieldState extends State<MyPasswordTextField> {
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 2,
-              color: Color(0xFF111214),
+              color: Color(0xFF212121),
             ),
             borderRadius: BorderRadius.all(
               Radius.circular(15),
@@ -54,7 +54,7 @@ class _MyPasswordTextFieldState extends State<MyPasswordTextField> {
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 2,
-              color: Color(0xFF3E3F43),
+              color: Color(0xFF474747),
             ),
             borderRadius: BorderRadius.all(
               Radius.circular(10),

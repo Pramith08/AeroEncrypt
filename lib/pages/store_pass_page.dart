@@ -5,6 +5,7 @@ import 'package:aeroencrypt/components/my_snack_bar.dart';
 import 'package:aeroencrypt/components/my_title_text.dart';
 import 'package:aeroencrypt/services/database.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StorePassPage extends StatefulWidget {
   final String userId;
@@ -98,9 +99,11 @@ class _StorePassPageState extends State<StorePassPage> {
                   children: [
                     Text(
                       "App Name",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Color(0xFFC3BBBB),
+                      style: GoogleFonts.openSans(
+                        textStyle: TextStyle(
+                          fontSize: 15,
+                          color: Color(0xFFC3BBBB),
+                        ),
                       ),
                     ),
                   ],
@@ -121,15 +124,17 @@ class _StorePassPageState extends State<StorePassPage> {
               ),
 
               //Username Text Field
-              const Padding(
+              Padding(
                 padding: EdgeInsets.all(6.0),
                 child: Row(
                   children: [
                     Text(
                       "Username",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Color(0xFFC3BBBB),
+                      style: GoogleFonts.openSans(
+                        textStyle: TextStyle(
+                          fontSize: 15,
+                          color: Color(0xFFC3BBBB),
+                        ),
                       ),
                     ),
                   ],
@@ -150,15 +155,17 @@ class _StorePassPageState extends State<StorePassPage> {
               ),
 
               //Password Text Field
-              const Padding(
+              Padding(
                 padding: EdgeInsets.all(6.0),
                 child: Row(
                   children: [
                     Text(
                       "Password",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Color(0xFFC3BBBB),
+                      style: GoogleFonts.openSans(
+                        textStyle: TextStyle(
+                          fontSize: 15,
+                          color: Color(0xFFC3BBBB),
+                        ),
                       ),
                     ),
                   ],

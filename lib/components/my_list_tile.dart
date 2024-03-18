@@ -2,6 +2,7 @@
 import 'package:aeroencrypt/components/my_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyListTile extends StatelessWidget {
   final String userName;
@@ -18,13 +19,13 @@ class MyListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
           color: Color(0xFFF4BBFF),
           borderRadius: BorderRadius.all(
-            Radius.circular(15),
+            Radius.circular(8),
           ),
         ),
         child: GestureDetector(
@@ -39,20 +40,22 @@ class MyListTile extends StatelessWidget {
               children: [
                 Text(
                   'Username: ',
-                  style: TextStyle(
-                    color: Color(0xFF474747),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: "MontserratMedium",
+                  style: GoogleFonts.openSans(
+                    textStyle: TextStyle(
+                      color: Color(0xFF474747),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
                 Text(
                   '$userName',
-                  style: TextStyle(
-                    color: Color(0xFF1F1F1F),
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: "MontserratMedium",
+                  style: GoogleFonts.openSans(
+                    textStyle: TextStyle(
+                      color: Color(0xFF131313),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ],

@@ -1,6 +1,7 @@
 import 'package:aeroencrypt/pages/show_data.dart';
 import 'package:aeroencrypt/services/database.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyAppList extends StatefulWidget {
   final String appName;
@@ -49,7 +50,7 @@ class _MyAppListState extends State<MyAppList> {
         decoration: BoxDecoration(
           color: Color(0xFFF4BBFF),
           borderRadius: BorderRadius.all(
-            Radius.circular(15),
+            Radius.circular(8),
           ),
         ),
         child: GestureDetector(
@@ -66,20 +67,23 @@ class _MyAppListState extends State<MyAppList> {
               children: [
                 Text(
                   'App Name: ',
-                  style: TextStyle(
-                    color: Color(0xFF474747),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: "MontserratMedium",
+                  style: GoogleFonts.openSans(
+                    textStyle: TextStyle(
+                      color: Color(0xFF474747),
+                      fontSize: 13.5,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
                 Text(
                   widget.appName,
-                  style: TextStyle(
-                    color: Color(0xFF1F1F1F),
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: "MontserratMedium",
+                  style: GoogleFonts.openSans(
+                    textStyle: TextStyle(
+                      color: Color(0xFF131313),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: "MontserratMedium",
+                    ),
                   ),
                 ),
               ],
