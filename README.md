@@ -1,4 +1,4 @@
-Aero Encrypt
+**Aero Encrypt**
 
 Under Development
 
