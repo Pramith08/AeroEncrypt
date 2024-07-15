@@ -5,7 +5,7 @@ class MyButton extends StatelessWidget {
   final double height;
   final double width;
   final String buttonText;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   const MyButton({
     super.key,

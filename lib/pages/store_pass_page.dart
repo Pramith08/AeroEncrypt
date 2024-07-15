@@ -23,43 +23,50 @@ TextEditingController _userNameController = TextEditingController();
 TextEditingController _passwordController = TextEditingController();
 
 class _StorePassPageState extends State<StorePassPage> {
+  bool _isLoading = false;
+
   void _storeData() async {
     FocusScope.of(context).unfocus();
 
-    //Write function here
+    // Validate inputs
+    if (_appNameController.text.isEmpty &&
+        _userNameController.text.isEmpty &&
+        _passwordController.text.isEmpty) {
+      mySnackBar(context, "Fill Your Details", Colors.red);
+      return;
+    }
+    if (_appNameController.text.isEmpty) {
+      mySnackBar(context, "Fill Your App Name", Colors.red);
+      return;
+    }
+    if (_userNameController.text.isEmpty) {
+      mySnackBar(context, "Fill Your Username", Colors.red);
+      return;
+    }
+    if (_passwordController.text.isEmpty) {
+      mySnackBar(context, "Fill Your Password", Colors.red);
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    // Store data
     String appName = _appNameController.text.toLowerCase().trim();
     String username = _userNameController.text.trim();
     String password = _passwordController.text.trim();
 
-    // Call the addData function here
     try {
-      if (_appNameController.text.isEmpty &&
-          _userNameController.text.isEmpty &&
-          _passwordController.text.isEmpty) {
-        mySnackBar(context, "Fill Your Details", Colors.red);
-        return;
-      }
-      if (_appNameController.text.isEmpty) {
-        mySnackBar(context, "Fill Your App Name", Colors.red);
-        return;
-      }
-      if (_userNameController.text.isEmpty) {
-        mySnackBar(context, "Fill Your Username", Colors.red);
-        return;
-      }
-      if (_passwordController.text.isEmpty) {
-        mySnackBar(context, "Fill Your Password", Colors.red);
-        return;
-      }
-      try {
-        await addData(widget.userId, appName, username, password);
-        mySnackBar(context, "Successfully Stored", Colors.green);
-        Navigator.pop(context);
-      } on Exception catch (e) {
-        mySnackBar(context, e.toString(), Colors.red);
-      }
+      await addData(widget.userId, appName, username, password);
+      mySnackBar(context, "Successfully Stored", Colors.green);
+      Navigator.pop(context);
     } on Exception catch (e) {
       mySnackBar(context, e.toString(), Colors.red);
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
     }
 
     _appNameController.clear();
@@ -124,7 +131,7 @@ class _StorePassPageState extends State<StorePassPage> {
                   height: screenHeight * 0.01,
                 ),
 
-                //Username Text Field
+                // Username Text Field
                 Padding(
                   padding: EdgeInsets.all(6.0),
                   child: Row(
@@ -155,7 +162,7 @@ class _StorePassPageState extends State<StorePassPage> {
                   height: screenHeight * 0.01,
                 ),
 
-                //Password Text Field
+                // Password Text Field
                 Padding(
                   padding: EdgeInsets.all(6.0),
                   child: Row(
@@ -184,16 +191,26 @@ class _StorePassPageState extends State<StorePassPage> {
                 SizedBox(
                   height: screenHeight * 0.03,
                 ),
-                // Expanded(
-                //   child: SizedBox(),
-                // ),
-                MyButton(
-                  height: 55,
-                  width: screenWidth - 55,
-                  buttonText: "Store Password",
-                  onTap: () async {
-                    _storeData();
-                  },
+
+                // Store Password Button
+                _isLoading
+                    ? Container(
+                        height: 55,
+                        width: screenWidth - 55,
+                        alignment: Alignment.center,
+                        child: CircularProgressIndicator(
+                          color: Color(0xFFF4BBFF),
+                        ),
+                      )
+                    : MyButton(
+                        height: 55,
+                        width: screenWidth - 55,
+                        buttonText: "Store Password",
+                        onTap: _storeData,
+                      ),
+
+                SizedBox(
+                  height: 20,
                 ),
               ],
             ),

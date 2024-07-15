@@ -1,5 +1,6 @@
 import 'dart:convert';
-import 'package:aeroencrypt/services/encrypt_decrypt.dart';
+import 'package:aeroencrypt/services/aes.dart';
+import 'package:aeroencrypt/services/rsa.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 final storage = FlutterSecureStorage();
@@ -16,36 +17,58 @@ Future<void> addData(
   final List<String> identifiers =
       List<String>.from(json.decode(existingIdentifiers));
 
+  // Encrypt UserName using AES
   Map<String, String> encryptionResultUsername =
       AESEncryptDecrypt.encryptAES(username);
 
   final encryptedUsername = encryptionResultUsername['encryptedText'];
-  final encryptedUsernameKey = encryptionResultUsername['key'];
+  final tempEncryptedUsernameKey = encryptionResultUsername['key'];
   final encryptedUsernameIV = encryptionResultUsername['IV'];
 
+  // Encrypt Username key using rsa
+  Map<String, dynamic> rsaUsernameResult =
+      await RSAEncryptDecrypt.encryptMessage(tempEncryptedUsernameKey!);
+
+  final rsaEncryptedAESUsernameKey = rsaUsernameResult['encrypted_message'];
+  final _rsaUsernameKey = rsaUsernameResult['key'];
+
+  //Encrypt Password using AES
   Map<String, String> encryptionResultPassword =
       AESEncryptDecrypt.encryptAES(password);
 
   final encryptedPassword = encryptionResultPassword['encryptedText'];
-  final encryptedPasswordKey = encryptionResultPassword['key'];
+  final tempEncryptedPasswordKey = encryptionResultPassword['key'];
   final encryptedPasswordIV = encryptionResultPassword['IV'];
 
-  // Encrypt UserName
+  // Encrypt Username key using rsa
+  Map<String, dynamic> rsaPasswordResult =
+      await RSAEncryptDecrypt.encryptMessage(tempEncryptedPasswordKey!);
+
+  final rsaEncryptedAESPasswordKey = rsaPasswordResult['encrypted_message'];
+  final _rsaPassowrdKey = rsaPasswordResult['key'];
+
+  //Store username
   await storage.write(
       key: '$appCollectionKey/$uniqueId/username', value: encryptedUsername);
   await storage.write(
       key: '$appCollectionKey/$uniqueId/username/key',
-      value: encryptedUsernameKey);
+      value: rsaEncryptedAESUsernameKey);
+  await storage.write(
+      key: '$appCollectionKey/$uniqueId/username/rsakey',
+      value: _rsaUsernameKey);
   await storage.write(
       key: '$appCollectionKey/$uniqueId/username/IV',
       value: encryptedUsernameIV);
 
-  //Encrypt Password
+  //Store password
   await storage.write(
       key: '$appCollectionKey/$uniqueId/password', value: encryptedPassword);
   await storage.write(
       key: '$appCollectionKey/$uniqueId/password/key',
-      value: encryptedPasswordKey);
+      value: rsaEncryptedAESPasswordKey);
+  await storage.write(
+      key: '$appCollectionKey/$uniqueId/password/rsakey',
+      value: _rsaPassowrdKey);
   await storage.write(
       key: '$appCollectionKey/$uniqueId/password/IV',
       value: encryptedPasswordIV);
@@ -73,30 +96,48 @@ Future<List<Map<String, String?>>> getData(String uId, String appName) async {
     //get Username Encrypted Details
     final encryptedUsername =
         await storage.read(key: '$appCollectionKey/$id/username');
-    final encryptedUsernameKey =
+    final rsaEncryptedAESUsernameKey =
         await storage.read(key: '$appCollectionKey/$id/username/key');
+    final rsaUsernameKey =
+        await storage.read(key: '$appCollectionKey/$id/username/rsakey');
     final encryptedUsernameIV =
         await storage.read(key: '$appCollectionKey/$id/username/IV');
 
-    //decrypt Username
+    //decrypt username key using rsa
+    Map<String, dynamic> rsaUsernameResult =
+        await RSAEncryptDecrypt.decryptMessage(
+            rsaEncryptedAESUsernameKey!, rsaUsernameKey!);
+
+    String aesUsernameKey = rsaUsernameResult['decrypted_message'];
+
+    //decrypt Username using AES
     final decryptedUsername = AESEncryptDecrypt.decryptAES(
         encryptedUsername.toString(),
         encryptedUsernameIV.toString(),
-        encryptedUsernameKey.toString());
+        aesUsernameKey.toString());
 
     //get Password Encrypted Details
     final encryptedPassword =
         await storage.read(key: '$appCollectionKey/$id/password');
-    final encryptedPasswordKey =
+    final rsaEncryptedAESPasswordKey =
         await storage.read(key: '$appCollectionKey/$id/password/key');
+    final rsaPasswordKey =
+        await storage.read(key: '$appCollectionKey/$id/password/rsakey');
     final encryptedPasswordIV =
         await storage.read(key: '$appCollectionKey/$id/password/IV');
 
-    //decrypt Password
+    //decrypt password key using rsa
+    Map<String, dynamic> rsaPasswordResult =
+        await RSAEncryptDecrypt.decryptMessage(
+            rsaEncryptedAESPasswordKey!, rsaPasswordKey!);
+
+    String aesPasswordKey = rsaPasswordResult['decrypted_message'];
+
+    //decrypt Password using AES
     final decryptedPassword = AESEncryptDecrypt.decryptAES(
         encryptedPassword.toString(),
         encryptedPasswordIV.toString(),
-        encryptedPasswordKey.toString());
+        aesPasswordKey.toString());
 
     allAppData.add({
       'username': decryptedUsername,

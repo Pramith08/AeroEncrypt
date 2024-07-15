@@ -15,16 +15,11 @@ class AESEncryptDecrypt {
     };
   }
 
-  // static String decryptAES(String encryptedTextBase64, iv, key) {
-  //   final encrypter = encrypt.Encrypter(encrypt.AES(key));
-
-  //   final encryptedText = encrypt.Encrypted.fromBase64(encryptedTextBase64);
-  //   final decryptText = encrypter.decrypt(encryptedText, iv: iv);
-  //   return decryptText;
-  // }
-
   static String decryptAES(
-      String encryptedTextBase64, String ivBase64, String keyBase64) {
+    String encryptedTextBase64,
+    String ivBase64,
+    String keyBase64,
+  ) {
     final key = encrypt.Key.fromBase64(keyBase64);
     final iv = encrypt.IV.fromBase64(ivBase64);
     final encrypter = encrypt.Encrypter(encrypt.AES(key));

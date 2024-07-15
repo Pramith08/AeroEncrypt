@@ -24,25 +24,35 @@ class MyAppList extends StatefulWidget {
 }
 
 class _MyAppListState extends State<MyAppList> {
+  bool _isLoading = false;
+
+  void _retrieveAndDisplayData(
+      BuildContext context, String appName, String uId) async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    List<Map<String, String?>> allAppData = await getData(uId, appName);
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ShowData(
+          allAppData: allAppData,
+          appName: widget.appName,
+          uId: uId,
+          onDeletionComplete: widget.onDeletionComplete,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    void _retrieveAndDisplayData(
-        BuildContext context, String appName, uId) async {
-      List<Map<String, String?>> allAppData = await getData(uId, appName);
-
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ShowData(
-            allAppData: allAppData,
-            appName: widget.appName,
-            uId: uId,
-            onDeletionComplete: widget.onDeletionComplete,
-          ),
-        ),
-      );
-    }
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 8),
       child: Container(
@@ -88,6 +98,12 @@ class _MyAppListState extends State<MyAppList> {
                 ),
               ],
             ),
+            trailing: _isLoading
+                ? CircularProgressIndicator(
+                    color: Color(0xFF131313),
+                    strokeWidth: 3,
+                  )
+                : null,
           ),
         ),
       ),
