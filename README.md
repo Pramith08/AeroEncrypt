@@ -1,5 +1,5 @@
 # AERO ENCRYPT
-AERO ENCRYPT is an offline password manager application built with Flutter. It allows users to securely store and retrieve their passwords using AES+RSA encryption. The app ensures that your credentials are stored securely on your device and can only be accessed by you.
+AERO ENCRYPT is an offline password manager application built with Flutter. It allows users to securely store and retrieve their passwords using hybrid AES+RSA encryption. The app ensures that your credentials are stored securely on your device and can only be accessed by you.
 
 ## Features
 - **User Registration and Login -** Uses Firebase for user authentication.
@@ -36,10 +36,6 @@ AERO ENCRYPT is an offline password manager application built with Flutter. It a
 - [Flutter](https://flutter.dev/)
 - [Firebase](https://firebase.google.com/)
 - [Flutter Packages or Dependencies](https://pub.dev/)
-- [Flutter Secure Storage](https://pub.dev/packages/flutter_secure_storage)
-- AES
-- RSA
-
 
 ## Contact
 If you have any questions or feedback, feel free to reach out.
