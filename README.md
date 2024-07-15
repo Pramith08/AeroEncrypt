@@ -40,4 +40,4 @@ AERO ENCRYPT is an offline password manager application built with Flutter. It a
 ## Contact
 If you have any questions or feedback, feel free to reach out.
 
-Email: pramithkiran02@gmail.com
+Email: aniruddhan.suresh@gmail.com, pramithkiran02@gmail.com
